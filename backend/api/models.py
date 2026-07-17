@@ -2,9 +2,11 @@ from django.db import models
 
 
 class Task(models.Model):
-    title = models.CharField(verbose_name='Заголовок', max_length=120)
-    description = models.TextField()
-    completed = models.BooleanField(default=False)
+    """A single to-do item with a title, description, and status flag."""
 
-    def _str_(self):
+    title = models.CharField(verbose_name='Title', max_length=120)
+    description = models.TextField(verbose_name='Description')
+    completed = models.BooleanField(verbose_name='Completed', default=False)
+
+    def __str__(self) -> str:
         return self.title
