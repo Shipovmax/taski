@@ -19,9 +19,7 @@ class TaskView(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
 
-    def destroy(
-        self, request: Request, *args: Any, **kwargs: Any
-    ) -> Response:
+    def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         serializer = self.get_serializer(self.get_object())
         super().destroy(request, *args, **kwargs)
         return Response(serializer.data, status=status.HTTP_200_OK)
